@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>rTag</title>
     <link rel="stylesheet" href="{% static 'css/styles.css'%}">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <h1>{% block header %}{% endblock header %}</h1>
+    <h1 class="text-3xl font-bold underline">{% block header %}{% endblock header %}</h1>
+    <div id="main_content">{% block content %}{% endblock content %}</div>
 </body>
 </html>
