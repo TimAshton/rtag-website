@@ -1,15 +1,49 @@
 <!DOCTYPE html>
 {% load static %}
-<html lang="en">
+<html class="h-full bg-gray-900">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>rTag</title>
     <link rel="stylesheet" href="{% static 'css/styles.css'%}">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,container-queries"></script>
 </head>
-<body>
-    <h1 class="text-3xl font-bold underline">{% block header %}{% endblock header %}</h1>
-    <div id="main_content">{% block content %}{% endblock content %}</div>
+<body class="h-full">
+    <div class="min-h-full">
+    <nav class="bg-gray-800/50">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-16 items-center justify-between">
+            <div class="flex items-center">
+                <div class="hidden md:block">
+                    <div class="ml-1 flex items-baseline space-x-4">
+                        <!-- Current: "bg-gray-950/50 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
+                        <a href="/about" aria-current="page" class="rounded-md bg-gray-950/50 px-3 py-2 text-sm font-medium text-white">About</a>
+                        <a href="/rules" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Rules</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <el-disclosure id="mobile-menu" hidden class="block md:hidden">
+        <div class="space-y-1 px-2 pt-2 pb-3 sm:px-3">
+            <!-- Current: "bg-gray-950/50 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
+            <a href="/about" aria-current="page" class="block rounded-md bg-gray-950/50 px-3 py-2 text-base font-medium text-white">About</a>
+            <a href="/rules" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white">Rules</a>
+        </div>
+        </el-disclosure>
+    </nav>
+
+    <header class="relative bg-gray-800 after:pointer-events-none after:absolute after:inset-x-0 after:inset-y-0 after:border-y after:border-white/10">
+        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+        <h1 class="text-3xl font-bold tracking-tight text-white">{% block header %}{% endblock header %}</h1>
+        </div>
+    </header>
+    <main>
+        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+        {% block content %}{% endblock content %}
+        </div>
+    </main>
+    </div>
 </body>
 </html>
